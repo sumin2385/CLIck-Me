@@ -1,5 +1,6 @@
 ### 실습2 ###
-# 실행 명령어: python app/cli.py --name pymon2025
+# 실행 명령어: python app/cli2.py
+# 실행 명령어: python app/cli2.py --name CLIck-Me
 
 # ==========|코드 실습|========= #
 import click

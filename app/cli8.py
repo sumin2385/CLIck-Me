@@ -1,5 +1,5 @@
 ### 실습8 ###
-# 실행 명령어: python app/cli.py
+# 실행 명령어: python app/cli8.py
 
 # ==========|코드 실습|========= #
 import click
