@@ -23,14 +23,13 @@ HelloPY 써머 퀘스트 `CLIck Me`는 <br>
 👾 Git 활용법 학습 + GitHub 게시 & 발표 기회까지! <br>
 
 ## 퀘스트 팀 소개
-| 역할 | 이름 | SNS 링크 |
+| 역할 | 이름 | SNS 링크/이메일 |
 | --- | --- | --- | 
-| Mentor | 👑 임주영 | <a href="https://www.linkedin.com/in/ju-young-lim-9a8b652a2/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
-| Mentor | 👑 김대현 | <a href="https://www.linkedin.com/in/daehyun-kim-5084b9333/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
-| Mentee | - | - |
-| Mentee | - | - |
-| Mentee | - | - |
-| Mentee | - | - |
+| 🫐 Mentor | 임주영 | <a href="https://www.linkedin.com/in/ju-young-lim-9a8b652a2/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
+| 🫐 Mentor | 김대현 | <a href="https://www.linkedin.com/in/daehyun-kim-5084b9333/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
+| 🍋 Mentee | 백수진 | - |
+| 🍋 Mentee | 서수민 | - |
+| 🍋 Mentee | 구민경 | - |
 
 ## ⏰ 퀘스트 일정
 | 주차 | 기간 | 주요 활동 |
