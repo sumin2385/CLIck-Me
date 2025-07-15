@@ -3,6 +3,12 @@
 <a href="#"><img src="https://img.shields.io/badge/☀️_2025_Summer_Project🏖️-1E90FF?style=for-the-badge&logo=github&logoColor=white"/></a>
 <a href="#"><img src="https://img.shields.io/badge/🖱️_CLIck_Me-FF4500?style=for-the-badge&logo=rocket&logoColor=white"/></a>
 
+![Python](https://img.shields.io/badge/Python-3.13.5-3776AB?style=flat-square&logo=python&logoColor=white)
+![click](https://img.shields.io/badge/click-8.2.1-007ACC?style=flat-square)
+![colorama](https://img.shields.io/badge/colorama-0.4.6-FBCA04?style=flat-square)
+![pyfiglet](https://img.shields.io/badge/pyfiglet-1.0.3-005f99?style=flat-square)
+![rich](https://img.shields.io/badge/rich-14.0.0-CC0066?style=flat-square)
+
 ## 퀘스트 소개
 > 🔗 [**퀘스트 자세히 보기**](https://animated-pulsar-e0c.notion.site/CLIck-Me-220db6076de280cc950bc5a371e94421) <br>
 
