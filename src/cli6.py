@@ -1,5 +1,5 @@
-### 실습5 ###
-# 실행 명령어: python app/cli5.py
+### 실습6 ###
+# 실행 명령어: python src/cli6.py
 
 # ==========|코드 실습|========= #
 import click

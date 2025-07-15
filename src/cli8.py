@@ -1,14 +1,27 @@
 ### 실습8 ###
-# 실행 명령어: python app/cli8.py
+# 실행 명령어: python src/cli8.py
 
 # ==========|코드 실습|========= #
 import click
 import pyfiglet
+import time
+
 from rich.table import Table
 from rich.console import Console
+from rich.progress import track
+from rich.syntax import Syntax
 
 @click.command()
 def main():
+    console = Console()
+
+    code = """print(hellopy)"""
+    syntax = Syntax(code, "python", theme="monokai", line_numbers=True)
+    console.print(syntax)
+
+    for step in track(range(10), description="Loading HelloPY..."):
+        time.sleep(0.3)
+
     print(click.style(pyfiglet.figlet_format("HelloPY", font="doom"), fg="magenta"))
     click.echo(click.style(f"Hello, HelloPY World!", fg='magenta', bg='white', bold=True))
     click.echo("""
@@ -41,7 +54,6 @@ def main():
     table.add_row("LV3", "초코파이", "리딩 경험 보유 \n 채팅 100회, 이모지 반응 200회, 가입 30일 이상", "멘토 미팅 커리어 코칭")
     table.add_row("LV4", "블루베리파이", "(운영진 지정 또는 신청 기준)", "HelloPY 티셔츠 \n 제안자 권한 전용 배지")
 
-    console = Console()
     console.print(table)
 
 if __name__ == "__main__":

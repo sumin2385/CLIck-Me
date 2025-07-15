@@ -1,6 +1,6 @@
 ### 실습4 ###
-# 실행 명령어1: python app/cli4.py name
-# 실행 명령어2: python app/cli4.py mbti
+# 실행 명령어1: python src/cli4.py name
+# 실행 명령어2: python src/cli4.py mbti
 
 # ==========|코드 실습|========= #
 
