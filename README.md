@@ -3,6 +3,12 @@
 <a href="#"><img src="https://img.shields.io/badge/☀️_2025_Summer_Project🏖️-1E90FF?style=for-the-badge&logo=github&logoColor=white"/></a>
 <a href="#"><img src="https://img.shields.io/badge/🖱️_CLIck_Me-FF4500?style=for-the-badge&logo=rocket&logoColor=white"/></a>
 
+![Python](https://img.shields.io/badge/Python-3.13.5-3776AB?style=flat-square&logo=python&logoColor=white)
+![click](https://img.shields.io/badge/click-8.2.1-007ACC?style=flat-square)
+![colorama](https://img.shields.io/badge/colorama-0.4.6-FBCA04?style=flat-square)
+![pyfiglet](https://img.shields.io/badge/pyfiglet-1.0.3-005f99?style=flat-square)
+![rich](https://img.shields.io/badge/rich-14.0.0-CC0066?style=flat-square)
+
 ## 퀘스트 소개
 > 🔗 [**퀘스트 자세히 보기**](https://animated-pulsar-e0c.notion.site/CLIck-Me-220db6076de280cc950bc5a371e94421) <br>
 
@@ -31,10 +37,10 @@ HelloPY 써머 퀘스트 `CLIck Me`는 <br>
 | :--- | :--- | :--- |
 | **WEEK 0** | - 7/13(일) 12:00 | 인원 모집 |
 | **WEEK 0** | 7/14(월) 20:00 | OT |
-| **WEEK 1** | 7/14(월) – 7/18(금) | Python CLI 라이브러리 활용법 학습 |
-| **WEEK 2** | 7/21(월) – 7/25(금) | Codex, Gemini로 CLI 구현 |
-| **WEEK 3** | 7/28(월) – 8/1(금) | Git 활용법 학습 + GitHub 게시 |
-| **Recap Week** | 8/4(월) – 8/8(금) | *(파이콘 준비)* |
+| **WEEK 1** | 7/21(월) – 7/25(금) | Python CLI 라이브러리 활용법 학습 |
+| **WEEK 2** | 7/28(월) – 8/1(금) | Codex, Gemini로 CLI 구현 |
+| **WEEK 3** | 8/4(월) – 8/8(금) | Git 활용법 학습 + GitHub 게시 |
+| **Recap Week** | 8/11(월) – 8/14(목) | *(파이콘 준비)* |
 | **파이콘 한국 2025** | 8/15(금) – 8/16(토) | 파이콘 한국 전시 |
 
 ## About HelloPY

@@ -1,5 +1,5 @@
 ### Homework ###
-# 실행 명령어: python app/my-cli-proflie.py
+# 실행 명령어: python src/cli-proflie.py
 
 # ==========|코드 실습|========= #
 import click
@@ -11,3 +11,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+ 

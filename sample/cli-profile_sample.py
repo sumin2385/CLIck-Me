@@ -1,17 +1,30 @@
-### 실습8 ###
-# 실행 명령어: python app/cli8.py
+### Week1 sample ###
+# 실행 명령어: python sample/cli-profile_sample.py
 
 # ==========|코드 실습|========= #
 import click
 import pyfiglet
+import time
+
 from rich.table import Table
 from rich.console import Console
+from rich.progress import track
+from rich.syntax import Syntax
 
 @click.command()
 def main():
-    print(click.style(pyfiglet.figlet_format("HelloPY", font="doom"), fg="magenta"))
-    click.echo(click.style(f"Hello, HelloPY World!", fg='magenta', bg='white', bold=True))
-    click.echo("""
+    console = Console()
+
+    # 코드 시각화
+    code = """print(hellopy)"""
+    syntax = Syntax(code, "python", theme="monokai", line_numbers=True)
+    
+    # 진행 상황 시각화
+    for step in track(range(10), description="Loading HelloPY World..."):
+        time.sleep(0.3)
+    
+    # 헬로파이 월드 소개
+    explain = """
 ‘헬로파이 월드’는 파이썬을 배우고, 만들고, 함께 성장하는 주니어 개발자들의 세계를 상징합니다.
 이곳의 ‘파이’는 단순한 디저트가 아닌, 문제를 해결하고 세상을 연결하려는 열정과 가능성을 담고 있죠.
 🍋 레몬파이 마을에서는 처음 배우는 이들의 공부가,
@@ -26,22 +39,26 @@ def main():
 🔥Pymon이 만든 에러를 해결하기 위해, 각 마을에서 파이크루(Pie Crew)가 모였습니다.
 이제, 당신의 차례입니다.
 불꽃을 되살리고, 헬로파이 월드를 지켜주세요.
-""")
+"""
 
+    # Table 표
     table = Table(title=click.style("HelloPY 파이크루 소개"), style="purple")
-
     table.add_column("레벨", style="cyan")
     table.add_column("캐릭터명", justify="right")
     table.add_column("다음 단계 승급 조건 to-do", justify="right")
     table.add_column("승급 조건 만족 시, 보상", justify="right")
-
     table.add_row("LV0", "파이도우", "자기소개 채널에 자기소개 \n 온보딩 문서 정독 \n 가입 20분 이상 시 자동 승급", "✅ 모든 채널 접근 권한 \n ✅ 모든 활동 참여 가능")
     table.add_row("LV1", "레몬파이", "SNS 채널 팔로우 인증 \n 채팅 10회, 이모티콘 반응 30회 이상 \n 프로젝트 참여 3회 이상 \n 발표 1회 이상", "활동 참여 자격 획득")
     table.add_row("LV2", "애플파이", "활동 참여 1회 이상 \n 채팅 50회, 이모지 반응 100회, 가입 30일 이상", "굿즈 응모권 제공")
     table.add_row("LV3", "초코파이", "리딩 경험 보유 \n 채팅 100회, 이모지 반응 200회, 가입 30일 이상", "멘토 미팅 커리어 코칭")
     table.add_row("LV4", "블루베리파이", "(운영진 지정 또는 신청 기준)", "HelloPY 티셔츠 \n 제안자 권한 전용 배지")
 
-    console = Console()
+    ### CLI 출력
+    console.print(syntax)
+    click.echo(click.style(pyfiglet.figlet_format("HelloPY", font="doom"), fg="magenta"))
+    click.echo(click.style(f"Hello, HelloPY World!", fg='magenta', bg='white', bold=True))
+    console.print(explain)
+    
     console.print(table)
 
 if __name__ == "__main__":
