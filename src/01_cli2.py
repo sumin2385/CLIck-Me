@@ -1,6 +1,6 @@
 ### 실습2 ###
-# 실행 명령어: python src/cli2.py
-# 실행 명령어: python src/cli2.py --name CLIck-Me
+# 실행 명령어: python src/01_cli2.py
+# 실행 명령어: python src/01_cli2.py --name CLIck-Me
 
 # ==========|코드 실습|========= #
 import click

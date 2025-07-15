@@ -1,5 +1,5 @@
 ### Homework ###
-# 실행 명령어: python src/my-cli-proflie.py
+# 실행 명령어: python src/cli-proflie.py
 
 # ==========|코드 실습|========= #
 import click
