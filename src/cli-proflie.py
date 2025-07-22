@@ -1,14 +1,4 @@
 ### Homework ###
-# 실행 명령어: python src/cli-proflie.py
+# 실행 명령어: python [본인_이름]/cli-proflie.py
 
 # ==========|코드 실습|========= #
-import click
-
-@click.command()
-
-def main():
-    print("Hello, HelloPY!")
-
-if __name__ == "__main__":
-    main()
- 
