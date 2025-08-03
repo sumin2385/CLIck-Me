@@ -17,6 +17,7 @@ from __future__ import annotations
 import json
 import sys
 from pathlib import Path
+import time
 from typing import Any, Dict, List
 
 import click 
@@ -24,6 +25,7 @@ import pyfiglet
 from rich.box import ROUNDED
 from rich.console import Console
 from rich.panel import Panel
+from rich.progress import track
 from rich.rule import Rule
 from rich.table import Table
 
@@ -137,7 +139,7 @@ def print_activities_table(activities: List[Dict[str, str]]) -> None:
     Parameters
     ----------
     activities : List[Dict[str, str]]
-        대외활동 리스트
+        동아리 리스트
         각 항목은 {"name": ..., "role": ..., "description": ...} 형태
     """
     if not activities:
@@ -239,38 +241,56 @@ def print_contact_info(contact: Dict[str, str]) -> None:
     type=click.Path(exists=True, path_type=Path),
     help="data.json 파일 경로(기본값: data.json)",
 )
-def main(data_path: Path | None = None) -> None:
+@click.option("--no-skills", is_flag=True, help="기술 스택 정보를 숨깁니다.")
+@click.option("--no-activities", is_flag=True, help="동아리 활동 정보를 숨깁니다.")
+@click.option("--no-education", is_flag=True, help="학력 정보를 숨깁니다.")
+@click.option("--no-contact", is_flag=True, help="연락처 정보를 숨깁니다.")
+def main(
+    data_path: Path | None = None,
+    no_skills: bool = False,
+    no_activities: bool = False,
+    no_education: bool = False,
+    no_contact: bool = False,
+) -> None:
     """
     CLI에서 개발자를 소개하는 메인 함수.
     """
-    # 기본 경로 설정
-    if data_path is None:
-        data_path = Path(__file__).with_name("data.json")
+    for step in track(range(10), description="Processing..."):
+        time.sleep(0.5)  # 로딩 애니메이션 효과를 위해 잠시 대기
 
-    developer_data = load_developer_data(data_path)
+        # 기본 경로 설정
+        if data_path is None:
+            data_path = Path(__file__).with_name("data.json")
 
-    # JSON에서 데이터 추출 (기본값 처리 포함)
-    initials = developer_data.get("initials")
-    name = developer_data.get("name", "Unknown")
-    # 'initials' 키가 없으면 'name'으로 생성
-    if not initials:
-        initials = "".join([part[0].upper() for part in name.split()])
+        developer_data = load_developer_data(data_path)
 
-    intro = developer_data.get("intro", "")
-    skills = developer_data.get("skills", {})
-    activities = developer_data.get("activities", [])
-    education = developer_data.get("education", {})
-    contact = developer_data.get("contact", {})
+        # JSON에서 데이터 추출 (기본값 처리 포함)
+        initials = developer_data.get("initials")
+        name = developer_data.get("name", "Unknown")
+        # 'initials' 키가 없으면 'name'으로 생성
+        if not initials:
+            initials = "".join([part[0].upper() for part in name.split()])
+
+        intro = developer_data.get("intro", "")
+        skills = developer_data.get("skills", {})
+        activities = developer_data.get("activities", [])
+        education = developer_data.get("education", {})
+        contact = developer_data.get("contact", {})
 
     print_initial(initials, name)
     print_intro(intro)
 
     console.print(Rule(style="bright_black"))
 
-    print_skills_table(skills)
-    print_activities_table(activities)
-    print_education_info(education)
-    print_contact_info(contact)
+    # 플래그 옵션에 따라 정보 출력 여부 결정
+    if not no_skills:
+        print_skills_table(skills)
+    if not no_activities:
+        print_activities_table(activities)
+    if not no_education:
+        print_education_info(education)
+    if not no_contact:
+        print_contact_info(contact)
 
     console.print(Rule(style="bright_blue"))
     console.print("[bold green]봐주셔서 감사합니다! 😄[/bold green]", justify="center")
@@ -278,5 +298,3 @@ def main(data_path: Path | None = None) -> None:
 
 if __name__ == "__main__":
     main()
-
-#아니 왜안됨
