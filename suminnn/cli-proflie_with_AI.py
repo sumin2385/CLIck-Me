@@ -1,29 +1,15 @@
-### Homework ###
-# 실행 명령어: python [본인_이름]/cli-proflie_with_AI.py
-
-# ==========|코드 실습|========= #
-#!/usr/bin/env python3
-"""
-cli-proflie.py
---------------
-
-CLI를 통해 개발자를 소개하는 스크립트.
-사용자는 data.json에 정보를 입력한 뒤, 이 스크립트를 실행하면
-이니셜, 자기소개, 기술 스택 표를 보여준다.
-"""
-
-from __future__ import annotations
-
 import json
 import sys
+import time
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 
 import click
 import pyfiglet
 from rich.box import ROUNDED
 from rich.console import Console
 from rich.panel import Panel
+from rich.progress import track
 from rich.rule import Rule
 from rich.table import Table
 
@@ -32,26 +18,7 @@ console = Console()
 
 
 def load_developer_data(data_file: Path) -> Dict[str, Any]:
-    """
-    data.json 파일에서 개발자 정보를 로드한다.
-
-    Parameters
-    ----------
-    data_file : Path
-        개발자 정보가 담긴 JSON 파일 경로
-
-    Returns
-    -------
-    Dict[str, Any]
-        개발자 정보 JSON 객체
-
-    Raises
-    ------
-    FileNotFoundError
-        data.json이 존재하지 않을 경우
-    json.JSONDecodeError
-        JSON 파싱 오류 발생 시
-    """
+    """JSON 파일에서 개발자 정보를 로드합니다."""
     try:
         with data_file.open("r", encoding="utf-8") as f:
             return json.load(f)
@@ -64,16 +31,7 @@ def load_developer_data(data_file: Path) -> Dict[str, Any]:
 
 
 def print_initial(initials: str, name: str) -> None:
-    """
-    개발자 이니셜을 Figlet 폰트로 Panel에 담아 출력한다.
-
-    Parameters
-    ----------
-    initials : str
-        개발자 이니셜
-    name : str
-        개발자 이름
-    """
+    """개발자 이름과 이니셜을 ASCII 아트로 출력합니다."""
     figlet_text = pyfiglet.figlet_format(initials, font="slant")
     console.print(
         Panel(
@@ -89,28 +47,13 @@ def print_initial(initials: str, name: str) -> None:
 
 
 def print_intro(intro: str) -> None:
-    """
-    한 줄 자기소개를 출력한다.
-
-    Parameters
-    ----------
-    intro : str
-        자기소개 문구
-    """
+    """자기소개 문구를 출력합니다."""
     console.print(f'[italic yellow]"{intro}"[/italic yellow]', justify="center")
     console.print()
 
 
 def print_skills_table(skills: Dict[str, List[str]]) -> None:
-    """
-    기술 스택을 표 형태로 출력한다.
-
-    Parameters
-    ----------
-    skills : Dict[str, List[str]]
-        기술 스택 딕셔너리
-        {"분야": ["기술1", "기술2"], ...} 형태
-    """
+    """기술 스택을 Rich Table 형태로 출력합니다."""
     if not skills:
         return
     table = Table(
@@ -131,15 +74,7 @@ def print_skills_table(skills: Dict[str, List[str]]) -> None:
 
 
 def print_activities_table(activities: List[Dict[str, str]]) -> None:
-    """
-    대외활동 정보를 표 형태로 출력한다.
-
-    Parameters
-    ----------
-    activities : List[Dict[str, str]]
-        대외활동 리스트
-        각 항목은 {"name": ..., "role": ..., "description": ...} 형태
-    """
+    """동아리 활동 정보를 Rich Table 형태로 출력합니다."""
     if not activities:
         return
 
@@ -165,14 +100,7 @@ def print_activities_table(activities: List[Dict[str, str]]) -> None:
 
 
 def print_education_info(education: Dict[str, str]) -> None:
-    """
-    학력 정보를 표 형태로 출력한다.
-
-    Parameters
-    ----------
-    education : Dict[str, str]
-        {"university": ..., "major": ..., "expected_graduation": ...} 형태의 학력 딕셔너리
-    """
+    """학력 정보를 Rich Table 형태로 출력합니다."""
     if not education:
         return
 
@@ -201,14 +129,7 @@ def print_education_info(education: Dict[str, str]) -> None:
 
 
 def print_contact_info(contact: Dict[str, str]) -> None:
-    """
-    연락처 정보를 표 형태로 출력한다.
-
-    Parameters
-    ----------
-    contact : Dict[str, str]
-        {"email": ..., "github": ..., "linkedin": ...} 형태의 연락처 딕셔너리
-    """
+    """연락처 정보를 Rich Table 형태로 출력합니다."""
     if not contact:
         return
 
@@ -239,13 +160,24 @@ def print_contact_info(contact: Dict[str, str]) -> None:
     type=click.Path(exists=True, path_type=Path),
     help="data.json 파일 경로(기본값: data.json)",
 )
-def main(data_path: Path | None = None) -> None:
-    """
-    CLI에서 개발자를 소개하는 메인 함수.
-    """
+@click.option("--no-skills", is_flag=True, help="기술 스택 정보를 숨깁니다.")
+@click.option("--no-activities", is_flag=True, help="동아리 활동 정보를 숨깁니다.")
+@click.option("--no-education", is_flag=True, help="학력 정보를 숨깁니다.")
+@click.option("--no-contact", is_flag=True, help="연락처 정보를 숨깁니다.")
+def main(
+    data_path: Optional[Path] = None,
+    no_skills: bool = False,
+    no_activities: bool = False,
+    no_education: bool = False,
+    no_contact: bool = False,
+) -> None:
+    """CLI에서 개발자 프로필을 출력합니다."""
+    for _ in track(range(10), description="Processing..."):
+        time.sleep(0.1)  # 로딩 애니메이션 효과를 위해 잠시 대기
+
     # 기본 경로 설정
     if data_path is None:
-        data_path = Path(__file__).with_name("data.json")
+        data_path = Path(__file__).parent / "data.json"
 
     developer_data = load_developer_data(data_path)
 
@@ -267,10 +199,15 @@ def main(data_path: Path | None = None) -> None:
 
     console.print(Rule(style="bright_black"))
 
-    print_skills_table(skills)
-    print_activities_table(activities)
-    print_education_info(education)
-    print_contact_info(contact)
+    # 플래그 옵션에 따라 정보 출력 여부 결정
+    if not no_education:
+        print_education_info(education)
+    if not no_skills:
+        print_skills_table(skills)
+    if not no_activities:
+        print_activities_table(activities)
+    if not no_contact:
+        print_contact_info(contact)
 
     console.print(Rule(style="bright_blue"))
     console.print("[bold green]봐주셔서 감사합니다! 😄[/bold green]", justify="center")
