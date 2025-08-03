@@ -19,7 +19,7 @@ import sys
 from pathlib import Path
 from typing import Any, Dict, List
 
-import click
+import click 
 import pyfiglet
 from rich.box import ROUNDED
 from rich.console import Console
@@ -278,3 +278,5 @@ def main(data_path: Path | None = None) -> None:
 
 if __name__ == "__main__":
     main()
+
+#아니 왜안됨
