@@ -1,0 +1,36 @@
+{
+  "initials": "SM",
+  "name": "서수민",
+  "intro": "정보통신공학과 재학 중이며, 이것저것 관심이 많은 학생입니다.",
+  "contact": {
+    "email": "coco2385@naver.com",
+    "github": "https://github.com/sumin2385",
+    "linkedin": "https://www.linkedin.com/in/suminnn2385/"
+  },
+  "skills": {
+    "Languages": ["Python", "C", "C++", "Java"],
+    "Tools": ["Git", "VSCode", "IntelliJ IDEA"]
+  },
+  "activities": [
+    {
+      "name": "봉사동아리",
+      "role": "운영진",
+      "description": "홍보물 제작과 전반적인 운영을 맡고 있습니다"
+    },
+    {
+      "name": "IT 봉사 동아리",
+      "role": "회원",
+      "description": "정기 특수학급 IT봉사활동과 추가적인 멘토링 활동을 하고 있습니다"
+    },
+    {
+      "name": "밴드 동아리",
+      "role": "회원",
+      "description": "학기마다 공연을 진행하고 있습니다"
+    }
+  ],
+  "education": {
+    "university": "동국대학교",
+    "major": "정보통신공학과",
+    "expected_graduation": "2028년 2월"
+  }
+}
